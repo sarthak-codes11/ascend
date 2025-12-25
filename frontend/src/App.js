@@ -1,23 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
+import { useAuth } from './AuthContext';
+import Login from './Login';
+import Signup from './Signup';
+import LogoutButton from './LogoutButton';
 
 function App() {
+  const { user, loading } = useAuth();
+
+  if (loading) {
+    return <div className="App">Loading...</div>;
+  }
+
+  if (!user) {
+    return (
+      <div className="App">
+        <h1>Welcome</h1>
+        <div style={{ display: 'flex', gap: '2rem' }}>
+          <Login />
+          <Signup />
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Logged in as {user.email}</h1>
+      <LogoutButton />
     </div>
   );
 }
