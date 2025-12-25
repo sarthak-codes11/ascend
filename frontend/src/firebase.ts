@@ -26,3 +26,6 @@ if (window.location.hostname === "localhost") {
 }
 
 export { app, auth, db };
+  connectAuthEmulator(auth, "http://127.0.0.1:9099");
+
+  
