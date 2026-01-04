@@ -7,6 +7,7 @@ import SkillQuestionnaire from './SkillQuestionnaire.tsx';
 import SkillDashboard from './SkillDashboard.tsx';
 import {doc, getDoc} from 'firebase/firestore';
 import {db} from './firebase';
+import TopBarLogout from './TopBarLogout.tsx';
 
 function App() {
   const {user, loading} = useAuth();
@@ -57,10 +58,20 @@ function App() {
   }
 
   if (hasAssessment) {
-    return <SkillDashboard />;
+    return (
+      <>
+        <TopBarLogout />
+        <SkillDashboard />
+      </>
+    );
   }
 
-  return <SkillQuestionnaire />;
+  return (
+    <>
+      <TopBarLogout />
+      <SkillQuestionnaire />
+    </>
+  );
 }
 
 export default App;

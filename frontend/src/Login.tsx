@@ -3,6 +3,7 @@ import { FirebaseError } from "firebase/app";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { useAuth } from "./AuthContext";
 import { auth } from "./firebase";
+import Logo from "./Logo.tsx";
 
 const Login: React.FC = () => {
   const { login, signup } = useAuth();
@@ -102,21 +103,7 @@ const Login: React.FC = () => {
             <div className="max-w-md">
               {/* Logo and brand */}
               <div className="flex items-center gap-4 mb-10">
-                <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-indigo-600 to-blue-600 flex items-center justify-center">
-                  <svg
-                    className="w-9 h-9 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    strokeWidth={2}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M7 17L17 7M17 7H7M17 7V17"
-                    />
-                  </svg>
-                </div>
+                <Logo size={64} className="rounded-xl object-cover" />
                 <div>
                   <h1 className="text-3xl font-semibold text-gray-900">Ascend</h1>
                 </div>
@@ -208,21 +195,7 @@ const Login: React.FC = () => {
           <div className="w-full max-w-md">
             {/* Mobile logo */}
             <div className="lg:hidden mb-8 text-center">
-              <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-indigo-600 to-blue-600 mb-3">
-                <svg
-                  className="w-8 h-8 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  strokeWidth={2.5}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M7 17L17 7M17 7H7M17 7V17"
-                  />
-                </svg>
-              </div>
+              <Logo size={56} className="inline-block rounded-xl object-cover mb-3" />
               <h1 className="text-2xl text-gray-900">Ascend</h1>
             </div>
 

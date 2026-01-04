@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { setDoc, doc, serverTimestamp } from "firebase/firestore";
 import { useAuth } from "./AuthContext";
 import { db } from "./firebase";
+import Logo from "./Logo.tsx";
 
 // Simple, first-step resume upload screen for new users.
 // In a real app you would also upload the file to Firebase Storage
@@ -81,7 +82,10 @@ const ResumeUpload: React.FC = () => {
     <div className="min-h-screen bg-white flex">
       <main className="flex-1 flex items-center justify-center px-6 py-12">
         <div className="w-full max-w-lg mx-auto">
-          <h1 className="text-2xl font-semibold text-gray-900 mb-2">Upload your resume</h1>
+          <div className="flex items-center gap-3 mb-2">
+            <Logo size={28} />
+            <h1 className="text-2xl font-semibold text-gray-900">Upload your resume</h1>
+          </div>
           <p className="text-sm text-gray-600 mb-6">
             We&apos;ll analyze your resume to compute a score and highlight skills that are detected
             or missing. You can upload a PDF or DOCX.

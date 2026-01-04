@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {doc, getDoc} from 'firebase/firestore';
 import {useAuth} from './AuthContext';
 import {db} from './firebase';
+import Logo from './Logo.tsx';
 
  type Answers = {
   frontend: number;
@@ -81,7 +82,10 @@ import {db} from './firebase';
   return (
     <div className="min-h-screen bg-white flex">
       <main className="flex-1 min-w-0 px-6 py-8 max-w-3xl mx-auto">
-        <h1 className="text-2xl font-semibold text-gray-900 mb-2">Skill Overview</h1>
+        <div className="flex items-center gap-3 mb-2">
+          <Logo size={28} />
+          <h1 className="text-2xl font-semibold text-gray-900">Skill Overview</h1>
+        </div>
         <p className="text-sm text-gray-600 mb-6">{data.summary}</p>
 
         <section className="bg-white border border-gray-200 rounded-lg p-5 mb-6">
