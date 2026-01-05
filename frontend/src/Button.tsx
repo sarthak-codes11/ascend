@@ -10,20 +10,28 @@ type Props = {
   className?: string;
 };
 
-const baseStyles =
-  "w-full h-11 rounded-md text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed";
+const baseStyles = 
+  "w-full h-24 rounded-2xl text-lg font-semibold transition-all duration-300 ease-in-out " +
+  "flex items-center justify-center gap-4 px-8 shadow-lg hover:shadow-xl active:shadow-md " +
+  "disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none border-0 " +
+  "relative overflow-hidden";
 
 const variantStyles: Record<Variant, string> = {
-  primary: "bg-indigo-600 text-white hover:bg-indigo-700",
-  success: "bg-emerald-600 text-white hover:bg-emerald-700",
-  warning: "bg-amber-600 text-white hover:bg-amber-700",
-  neutral: "bg-gray-200 text-gray-900 hover:bg-gray-300",
+  primary: "bg-gradient-to-r from-[#6366F1] via-[#8B5CF6] to-[#A855F7] text-white hover:from-[#5558E3] hover:via-[#7C3AED] hover:to-[#9333EA]",
+  success: "bg-gradient-to-r from-[#10B981] via-[#059669] to-[#047857] text-white hover:from-[#0D9F73] hover:via-[#047857] hover:to-[#065F46]",
+  warning: "bg-gradient-to-r from-[#F59E0B] via-[#D97706] to-[#B45309] text-white hover:from-[#D97706] hover:via-[#B45309] hover:to-[#92400E]",
+  neutral: "bg-gradient-to-r from-[#F3F4F6] via-[#E5E7EB] to-[#D1D5DB] text-gray-800 hover:from-[#E5E7EB] hover:via-[#D1D5DB] hover:to-[#C7C7C7]",
 };
 
-const Button: React.FC<Props> = ({ onClick, variant = "primary", children, type = "button", className }) => {
-  const classes = `${baseStyles} ${variantStyles[variant]}${className ? ` ${className}` : ""}`;
+const Button: React.FC<Props> = ({ onClick, variant = "primary", children, type = "button", className }: Props): React.ReactElement => {
+  const isFlexCol = className?.includes('flex-col');
+  const classes = `${baseStyles} ${variantStyles[variant]} ${isFlexCol ? 'flex-col' : ''}${className ? ` ${className}` : ""}`;
   return (
-    <button onClick={onClick} type={type} className={classes}>
+    <button 
+      onClick={onClick} 
+      type={type} 
+      className={classes}
+    >
       {children}
     </button>
   );

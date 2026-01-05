@@ -10,6 +10,7 @@ import {doc, getDoc} from 'firebase/firestore';
 import {db} from './firebase';
 import Logo from './Logo.tsx';
 import Button from './Button.tsx';
+import { Code, FileText, MessageSquare } from 'lucide-react';
 
  type Answers = {
   frontend: number;
@@ -195,17 +196,34 @@ import Button from './Button.tsx';
         )}
 
         {view === 'selection' && (
-          <div className="mt-6 space-y-3">
-            <h2 className="text-sm font-semibold text-gray-900">Choose what to do next</h2>
-            <Button onClick={() => setView('hackathon')} variant="primary" className="h-16 text-lg">
-              Hackathons
-            </Button>
-            <Button onClick={() => setView('resume')} variant="success" className="h-16 text-lg">
-              Resume Check
-            </Button>
-            <Button onClick={() => setView('interview')} variant="warning" className="h-16 text-lg">
-              Interview Qs
-            </Button>
+          <div className="mt-8 w-full max-w-2xl mx-auto">
+            <h2 className="text-xl font-bold text-gray-800 mb-8 text-center">Choose what to do next</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <Button 
+                onClick={() => setView('hackathon')} 
+                variant="primary"
+                className="flex-col"
+              >
+                <Code className="w-8 h-8 mb-2" />
+                <span>Hackathons</span>
+              </Button>
+              <Button 
+                onClick={() => setView('resume')} 
+                variant="success"
+                className="flex-col"
+              >
+                <FileText className="w-8 h-8 mb-2" />
+                <span>Resume Check</span>
+              </Button>
+              <Button 
+                onClick={() => setView('interview')} 
+                variant="warning"
+                className="flex-col"
+              >
+                <MessageSquare className="w-8 h-8 mb-2" />
+                <span>Interview Qs</span>
+              </Button>
+            </div>
           </div>
         )}
 
